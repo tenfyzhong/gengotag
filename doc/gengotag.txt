@@ -1,0 +1,48 @@
+*gengotag.txt* *gengotag* author: tenfyzhong email: tenfy@tenfy.cn
+
+================================================================================
+Contents:
+0. Introduction -------------------------------- |gengotag-introduction|
+1. Install ------------------------------------- |gengotag-install|
+2. Command ------------------------------------- |gengotag-command|
+3. LICENSE ------------------------------------- |gengotag-license|
+
+================================================================================
+0. Introduction                                  *gengotag-introduction*
+`gengotag` is a tool to generate golang struct with tag from a json
+file.
+
+It's very easy to usage. You should build the binary program `gengotag` after
+install the plugin using `go build`. And then you can run the command
+`Gengotag /path/file.json`. It will append the struct declaration after the
+currsor.
+
+
+================================================================================
+1. Install                                       *gengotag-install*
+I suggest you to use a plugin manager, such vim-plug or others.
+- vim-plug
+```viml
+Plug 'tenfyzhong/gengotag', {'do': 'go build'}
+```
+- Manual
+```
+git clone https://github.com/tenfyzhong/gengotag.git ~/.vim/bundle/gengotag
+echo 'set rtp+=~/.vim/bundle/gengotag' >> ~/.vimrc
+vim -c 'helptag ~/.vim/bundle/gengotag/doc' -c qa!
+cd ~/.vim/bundle/gengotag
+go build
+cd -
+```
+
+================================================================================
+2. Command                                       *gengotag-command*
+*Gengotag* /path/file.json
+Generate struct after the currsor.
+
+================================================================================
+3. LICENSE                                       *gengotag-license*
+MIT License  Copyright (c) 2021 tenfy
+
+" vim:ft=help:iskeyword+=-:iskeyword+=58:iskeyword+=#
+
