@@ -3,21 +3,12 @@ package gentag
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"os"
 	"sort"
 )
 
-func Gen(file, tagtype string, omitempty bool) (string, error) {
-	data, err := ioutil.ReadFile(file)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "read file %v\n", err)
-		return "", err
-	}
-
+func Gen(data []byte, tagtype string, omitempty bool) (string, error) {
 	v, err := unmarshalJson(data)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "unmarshal json: %v\n", err)
 		return "", err
 	}
 

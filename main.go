@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 
 	"github.com/tenfyzhong/gengotag/gentag"
@@ -26,10 +27,16 @@ func init() {
 }
 
 func main() {
-	text, err := gentag.Gen(file, tagtype, omitempty)
+	data, err := ioutil.ReadFile(file)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "read file %v\n", err)
+		os.Exit(2)
+	}
+
+	text, err := gentag.Gen(data, tagtype, omitempty)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(2)
+		os.Exit(3)
 	}
 	fmt.Printf("%s", text)
 }
