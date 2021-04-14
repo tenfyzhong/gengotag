@@ -86,12 +86,6 @@ func basicType(typ NodeType) string {
 		return "interface{}"
 	case TypeBool:
 		return "bool"
-	case TypeInt:
-		return "int"
-	case TypeInt64:
-		return "int64"
-	case TypeUint64:
-		return "uint64"
 	case TypeFloat64:
 		return "float64"
 	case TypeString:

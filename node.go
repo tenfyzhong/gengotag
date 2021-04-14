@@ -10,9 +10,6 @@ type NodeType int
 const (
 	TypeNull NodeType = iota
 	TypeBool
-	TypeInt
-	TypeInt64
-	TypeUint64
 	TypeFloat64
 	TypeString
 	TypeArray

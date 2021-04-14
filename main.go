@@ -72,8 +72,6 @@ func parseNode(tag string, v interface{}) *Node {
 	switch c := v.(type) {
 	case bool:
 		node.Type = TypeBool
-	case int:
-		node.Type = TypeInt
 	case float64:
 		node.Type = TypeFloat64
 	case string:
