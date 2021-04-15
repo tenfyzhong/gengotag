@@ -40,6 +40,9 @@ cd -
 *Gengotag[!]* /path/file.json
 Generate struct after the currsor. `!` will add `omitempty` to the tag.
 
+`GengotagAsk[!]`
+Ask to input the tag type and source file, and then generate struct.
+
 ================================================================================
 3. LICENSE                                       *gengotag-license*
 MIT License  Copyright (c) 2021 tenfy

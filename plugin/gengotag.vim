@@ -24,4 +24,11 @@ function! s:gen(file, type, omitempty)
   let @a = save
 endfunction
 
+function! s:genask(omitempty)
+  let type = input('tag type: ')
+  let file = input('filename: ', '', 'file')
+  call <SID>gen(file, type, a:omitempty)
+endfunction
+
 command! -bang -nargs=1 -complete=file Gengotag call <SID>gen(<q-args>, 'json', "<bang>" == "!")
+command! -bang -nargs=0 GengotagAsk call  <SID>genask("<bang>" == "!")
