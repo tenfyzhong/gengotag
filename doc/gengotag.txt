@@ -37,8 +37,8 @@ cd -
 
 ================================================================================
 2. Command                                       *gengotag-command*
-*Gengotag* /path/file.json
-Generate struct after the currsor.
+*Gengotag[!]* /path/file.json
+Generate struct after the currsor. `!` will add `omitempty` to the tag.
 
 ================================================================================
 3. LICENSE                                       *gengotag-license*
