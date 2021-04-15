@@ -53,9 +53,6 @@ func parseNode(tag string, v interface{}) *Node {
 		node.Children = NodeList{}
 		for k, v := range c {
 			child := parseNode(k, v)
-			if child == nil {
-				continue
-			}
 			node.Children = append(node.Children, child)
 		}
 		sort.Sort(node.Children)

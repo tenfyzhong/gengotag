@@ -111,6 +111,39 @@ func TestGen(t *testing.T) {
 			want1:   "type Hello struct {\n\tAaa1 float64 `json:\"aaa1\"`\n\tBbb2 float64 `json:\"bbb2\"`\n\tCcc3 float64 `json:\"ccc3\"`\n}\n\ntype Struct struct {\n\tABool bool `json:\"a_bool\"`\n\tHello *Hello `json:\"hello\"`\n\tHelloWorld string `json:\"hello_world\"`\n\tWorld *Hello `json:\"world\"`\n}\n\n",
 			wantErr: false,
 		},
+		{
+			name: "array",
+			args: func(t *testing.T) args {
+				return args{
+					data: []byte(`
+[{
+	"hello": "world"
+}
+]
+`),
+					tagtype: "json",
+				}
+			},
+			want1: "type Struct struct {\n\tHello string `json:\"hello\"`\n}\n\n",
+		},
+		{
+			name: "nil",
+			args: func(t *testing.T) args {
+				return args{
+					data: []byte(`
+{
+	"hello": null,
+	"nil_array": [],
+	"sub_array": [[{
+	"a_field": 123
+	}]]
+}
+`),
+					tagtype: "json",
+				}
+			},
+			want1: "type Struct struct {\n\tHello interface{} `json:\"hello\"`\n\tNilArray []interface{} `json:\"nil_array\"`\n\tSubArray [][]*Struct81 `json:\"sub_array\"`\n}\n\ntype Struct81 struct {\n\tAField float64 `json:\"a_field\"`\n}\n\n",
+		},
 	}
 
 	for _, tt := range tests {
